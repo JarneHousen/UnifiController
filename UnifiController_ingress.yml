@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/cluster-issuer: "dns-letsencrypt-prod"
+  namespace: unifi
+  name: unifi-controller-ingress
+spec:
+  tls:
+  - hosts: 
+    - ui.local.jarnehousen.com
+    secretName: ui-local-jarnehousen-com-tls
+  rules:
+  - host: ui.local.jarnehousen.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: unifi-controller-web-admin
+              port:
+                number: 80

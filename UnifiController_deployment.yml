@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unifi-controller
+  namespace: unifi
+  labels:
+    app: unifi-controller
+spec:
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      app: unifi-controller
+  template:
+    metadata:
+      labels:
+        app: unifi-controller
+    spec:
+      containers:
+      - name: unifi-controller
+        image: linuxserver/unifi-controller:6.5.55
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3478
+        - containerPort: 10001
+        - containerPort: 8080
+        - containerPort: 8443
+        env:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: MEM_LIMIT
+            value: "1024"
+          - name: MEM_STARTUP
+            value: "1024"
