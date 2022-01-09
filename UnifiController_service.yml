@@ -8,13 +8,13 @@ spec:
     app: unifi-controller
   ports:
     - name: unifi-controller-web-admin
-      port: 80
+      port: 443
       targetPort: 8443
-      protocol: TCP
+      # protocol: TCP
     - name: unifi-controller-device-comms
       port: 8080
       targetPort: 8080
-      protocol: TCP
+      # protocol: TCP
     - name: unifi-controller-ap-discovery
       port: 10001
       targetPort: 10001

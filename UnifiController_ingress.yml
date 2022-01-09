@@ -4,13 +4,14 @@ metadata:
   annotations:
     ingress.kubernetes.io/ssl-redirect: "true"
     cert-manager.io/cluster-issuer: "dns-letsencrypt-prod"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
   namespace: unifi
   name: unifi-controller-ingress
 spec:
   tls:
   - hosts: 
     - ui.local.jarnehousen.com
-    secretName: ui-local-jarnehousen-com-tls
+    secretName: ui-jarnehousen-com-tls
   rules:
   - host: ui.local.jarnehousen.com
     http:
@@ -19,6 +20,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: unifi-controller-web-admin
+              name: unifi-controller
               port:
-                number: 80
+                number: 443
