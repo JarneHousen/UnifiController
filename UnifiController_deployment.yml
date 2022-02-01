@@ -16,6 +16,10 @@ spec:
       labels:
         app: unifi-controller
     spec:
+      volumes:
+        - name: unifi-controller-config
+          persistentVolumeClaim:
+            claimName: unifi-controller-config
       containers:
       - name: unifi-controller
         image: linuxserver/unifi-controller:6.5.55
