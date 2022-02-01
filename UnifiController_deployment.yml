@@ -30,7 +30,7 @@ spec:
             value: "1000"
           - name: PGID
             value: "1000"
-          - name: MEM_LIMIT
-            value: "1024"
-          - name: MEM_STARTUP
-            value: "1024"
+          # - name: MEM_LIMIT
+          #   value: "1024"
+          # - name: MEM_STARTUP
+          #   value: "1024"
