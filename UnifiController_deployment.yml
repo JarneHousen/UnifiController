@@ -34,3 +34,6 @@ spec:
           #   value: "1024"
           # - name: MEM_STARTUP
           #   value: "1024"
+        volumeMounts:
+          - mountPath: /config
+            name: unifi-controller-config
