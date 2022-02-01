@@ -11,10 +11,6 @@ spec:
       port: 443
       targetPort: 8443
       # protocol: TCP
-    - name: unifi-controller-device-comms
-      port: 8080
-      targetPort: 8080
-      # protocol: TCP
     - name: unifi-controller-ap-discovery
       port: 10001
       targetPort: 10001
@@ -27,3 +23,20 @@ spec:
 #   loadBalancer:
 #     ingress:
 #     - ip: 192.168.10.2
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi-controller-device-comms
+  namespace: unifi
+spec:
+  type: LoadBalancer
+  selector:
+    app: unifi-controller
+  ports:
+    - name: unifi-controller-device-comms
+      port: 8080
+      targetPort: 8080
+      # protocol: TCP
